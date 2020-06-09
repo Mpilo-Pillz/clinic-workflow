@@ -10,10 +10,9 @@
         <label for="cars">Title:</label>
 
     <select id="title">
-      <option value="dr">Dr</option>
-      <option value="Mr">Mr</option>
-      <option value="mrs">Mrs</option>
-      <option value="miss">Miss</option>
+      <ng-container *ngFor="let title of titleDropDownValues">
+      <option [value]="title.title">{{ title.title | titlecase}}</option>
+    </ng-container>
 </select>
       </div>
       <div class="form-group">
@@ -21,18 +20,20 @@
         <input 
         class="form-control"
         type="text" 
-        placeholder=""
+        placeholder="initials"
         formControlName="initials"
         > 
+        <p *ngIf="!form.get('initials').valid && form.get('initials').touched" class="form-error">Please enter valid initials</p>
       </div>
       <div class="form-group">
         <label for="fullNames">Full Names:</label>
       <input 
       class="form-control"
       type="text" 
-      placeholder="first name"
+      placeholder="full names"
       formControlName="fullNames"
       > 
+      <p *ngIf="!form.get('fullNames').valid && form.get('fullNames').touched" class="form-error">Please enter valid full names</p>
     </div>
 
     <div class="form-group">
@@ -43,6 +44,7 @@
       placeholder="last name"
       formControlName="lastName"
       > 
+      <p *ngIf="!form.get('lastName').valid && form.get('lastName').touched" class="form-error">Please enter valid last name</p>
     </div>
 
     <div class="form-group">
@@ -53,6 +55,7 @@
       placeholder="idNumber"
       formControlName="idNumber"
       > 
+      <p *ngIf="!form.get('idNumber').valid && form.get('idNumber').touched" class="form-error">Please enter valid id number</p>
     </div>
 
     <div class="form-group">
@@ -60,36 +63,37 @@
       <input
       class="form-control" 
       type="text" 
-      placeholder="idNumber"
+      placeholder="citizenship"
       formControlName="citizenship"
       > 
+      <p *ngIf="!form.get('citizenship').valid && form.get('citizenship').touched" class="form-error">Please enter valid citizenship</p>
     </div>
 
     <div class="form-group">
-    <label for="gender">Gender</label>
-    <select id="title">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-      <option value="other">Other</option>
+    <label for="gender">Gender:</label>
+    <select id="gender">
+      <ng-container *ngFor="let sex of gender">
+      <option [value]="sex.sex">{{ sex.sex | titlecase}}</option>
+    </ng-container>
       
 </select>
     </div>
 
     <div class="form-group">
       <label for="gender">Ethnicity</label>
-      <select id="title">
-        <option value="female">Afican</option>
+      <select id="ethnicity">
+        <ng-container *ngFor="let race of ethnicity">
+        <option [value]="race.race">{{ race.race | titlecase}}</option>
+      </ng-container>
   </select>
       </div>
 
     <div class="form-group">
       <label for="maritalStatus">Marital Status:</label>
       <select id="title">
-        <option value="female">Single</option>
-        <option value="male">Married</option>
-        <option value="other">Divorced</option>
-        <option value="other">Partnership</option>
-        
+         <ng-container *ngFor="let status of maritalStatus">
+        <option value="status.status">{{ status.status | titlecase }}</option>
+      </ng-container>       
   </select>
       </div>
 
@@ -105,9 +109,10 @@
           <input
           class="form-control" 
           type="text" 
-          placeholder="idNumber"
+          placeholder="Religion"
           formControlName="religion"
           > 
+          <p *ngIf="!form.get('religion').valid && form.get('religion').touched" class="form-error">Please enter valid religion</p>
         </div>
    
 

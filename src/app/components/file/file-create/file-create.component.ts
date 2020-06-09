@@ -10,6 +10,71 @@ export class FileCreateComponent implements OnInit {
   mode = 'create'; //make this private and use a setter
   isLoading = false;
   form: FormGroup;
+
+  gender = [
+    {
+      sex: 'female',
+    },
+    {
+      sex: 'male'
+    },
+    {
+      sex: 'other'
+    }
+  ];
+
+  ethnicity = [
+    {
+      race: 'african'
+    },
+    {
+      race: 'asian'
+    },
+    {
+      race: 'caucasian'
+    },
+    {
+      race: 'indian'
+    },
+    {
+      race: 'mixed'
+    }
+  ];
+
+  maritalStatus = [
+    {
+      status: 'married'
+    },
+    {
+      status: 'single'
+    },
+    {
+      status: 'divorced'
+    },
+    {
+      status: 'partnership'
+    }
+  ];
+
+  titleDropDownValues = [
+    {
+      title: 'mr',
+    },
+    {
+      title: 'mrs',
+
+    },
+    {
+      title: 'dr',
+
+    }, {
+      title: 'professor',
+
+    },
+     {
+      title: 'miss'
+    }
+  ];
   constructor() { }
   
   ngOnInit(): void {
@@ -35,8 +100,6 @@ export class FileCreateComponent implements OnInit {
       }),
 
     })
-    
-    
     ;
   }
 
