@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { CFile } from '../file.model';
 
 @Component({
   selector: 'app-file-create',
@@ -7,11 +9,24 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./file-create.component.scss']
 })
 export class FileCreateComponent implements OnInit {
-  mode = 'create'; //make this private and use a setter
+  title;
+  initials;
+  fullNames;
+  lastName;
+  idNumber;
+  citizenship;
+  gender;
+  ethnicity;
+  maritalStatus;
+  language;
+  religion;
+  
+  cFile: CFile;
   isLoading = false;
   form: FormGroup;
-
-  gender = [
+  mode = 'create'; //make this private and use a setter
+  private fileId: string;
+  genderValues = [
     {
       sex: 'female',
     },
@@ -23,7 +38,7 @@ export class FileCreateComponent implements OnInit {
     }
   ];
 
-  ethnicity = [
+  ethnicityValues = [
     {
       race: 'african'
     },
@@ -41,7 +56,7 @@ export class FileCreateComponent implements OnInit {
     }
   ];
 
-  maritalStatus = [
+  maritalStatusValues = [
     {
       status: 'married'
     },
@@ -75,7 +90,7 @@ export class FileCreateComponent implements OnInit {
       title: 'miss'
     }
   ];
-  constructor() { }
+  constructor(public route: ActivatedRoute) { }
   
   ngOnInit(): void {
     
@@ -99,8 +114,16 @@ export class FileCreateComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(1)]
       }),
 
+    });
+
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('fileId')) {
+        this.mode = 'edit';
+        this.fileId = paramMap.get("fileId");
+        this.isLoading = true;
+        this.
+      }
     })
-    ;
   }
 
   onSaveFile() {

@@ -2,7 +2,7 @@
   
   <form [formGroup]="form" class="form-container__modal">
     <div class="form-header">
-      <h1>{{ mode }} File</h1>
+      <h1>{{ mode | titlecase }} File</h1>
     </div>
     <div class="form-input__section">
     
@@ -72,7 +72,7 @@
     <div class="form-group">
     <label for="gender">Gender:</label>
     <select id="gender">
-      <ng-container *ngFor="let sex of gender">
+      <ng-container *ngFor="let sex of genderValues">
       <option [value]="sex.sex">{{ sex.sex | titlecase}}</option>
     </ng-container>
       
@@ -82,7 +82,7 @@
     <div class="form-group">
       <label for="gender">Ethnicity</label>
       <select id="ethnicity">
-        <ng-container *ngFor="let race of ethnicity">
+        <ng-container *ngFor="let race of ethnicityValues">
         <option [value]="race.race">{{ race.race | titlecase}}</option>
       </ng-container>
   </select>
@@ -91,7 +91,7 @@
     <div class="form-group">
       <label for="maritalStatus">Marital Status:</label>
       <select id="title">
-         <ng-container *ngFor="let status of maritalStatus">
+         <ng-container *ngFor="let status of maritalStatusValues">
         <option value="status.status">{{ status.status | titlecase }}</option>
       </ng-container>       
   </select>
