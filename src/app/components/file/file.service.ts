@@ -18,6 +18,7 @@ export class FileService {
             map(cFileData => {
                 return cFileData.cfiles.map(cfile => {
                     return {
+                        id: cfile._id,
                         title: cfile.title,
                         initials: cfile.initials,
                         fullNames: cfile.fullNames,
@@ -43,10 +44,23 @@ export class FileService {
     }
 
     getCFile(id: string) {
-        return this.http.get(`http://localhost:3000/api/cfiles/${id}`);
+        return this.http.get<{
+            _id: string,
+            title: string,
+            initials: string,
+            fullNames: string,
+            lastName: string,
+            idNumber: string,
+            citizenship: string,
+            gender: string,
+            ethnicity: string,
+            maritalStatus: string,
+            language: string,
+            religion: string,
+        }>(`http://localhost:3000/api/cfiles/${id}`);
     }
 
-    addCFile() {
+    addCFile(...formValues) {
         const cfileData = {};
         this.http
         .post<{message: string; cfile: CFile }>(
@@ -54,12 +68,58 @@ export class FileService {
             cfileData
         ).subscribe(responseData => {
             const cfile: CFile = {
-                // id: responseData.cfile.id,
-                title: responseData.cfile.title
+                id: responseData.cfile.id,
+                title: responseData.cfile.title,
+                initials: responseData.cfile.initials,
+                fullNames: responseData.cfile.fullNames,
+                lastName: responseData.cfile.lastName,
+                idNumber: responseData.cfile.idNumber,
+                citizenship: responseData.cfile.citizenship,
+                gender: responseData.cfile.gender,
+                ethnicity: responseData.cfile.ethnicity,
+                maritalStatus: responseData.cfile.maritalStatus,
+                language: responseData.cfile.language,
+                religion: responseData.cfile.religion,
             };
             this.cfiles.push(cfile);
             this.cFilesUpdated.next([...this.cfiles]);
             this.router.navigate(['/']);
         });
+    }
+    updateCFile(...formValues) {
+        let cfileData: CFile = {
+            id: id,
+                title:title,
+                initials: initials,
+                fullNames: fullNames,
+                lastName: lastName,
+                idNumber: idNumber,
+                citizenship: citizenship,
+                gender: gender,
+                ethnicity: ethnicity,
+                maritalStatus: maritalStatus,
+                language: language,
+                religion: religion,
+        }
+        this.http
+        .put(`http://localhost:3000/api/cfiles/${id}`, cfileData)
+        .subscribe(response => {
+            const updatedCFiles = [...this.cfiles];
+            const oldCFileIndex = updatedCFiles.findIndex(f => f.id === id);
+            const cfile: CFile = {
+                id: id,
+                title:title,
+                initials: initials,
+                fullNames: fullNames,
+                lastName: lastName,
+                idNumber: idNumber,
+                citizenship: citizenship,
+                gender: gender,
+                ethnicity: ethnicity,
+                maritalStatus: maritalStatus,
+                language: language,
+                religion: religion,
+            };
+        })
     }
 }

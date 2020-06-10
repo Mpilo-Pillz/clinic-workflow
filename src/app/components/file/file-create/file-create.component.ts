@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CFile } from '../file.model';
+import { FileService } from '../file.service';
 
 @Component({
   selector: 'app-file-create',
@@ -25,7 +26,7 @@ export class FileCreateComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   mode = 'create'; //make this private and use a setter
-  private fileId: string;
+  private cfileId: string;
   genderValues = [
     {
       sex: 'female',
@@ -90,7 +91,7 @@ export class FileCreateComponent implements OnInit {
       title: 'miss'
     }
   ];
-  constructor(public route: ActivatedRoute) { }
+  constructor(public route: ActivatedRoute, public fileService: FileService) { }
   
   ngOnInit(): void {
     
@@ -119,16 +120,78 @@ export class FileCreateComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('fileId')) {
         this.mode = 'edit';
-        this.fileId = paramMap.get("fileId");
+        this.cfileId = paramMap.get('cfileId');
         this.isLoading = true;
-        this.
+        this.fileService.getCFile(this.cfileId).subscribe(cfileData => {
+          this.isLoading = false;
+          this.cFile = {
+                id: cfileData._id,
+                title: cfileData.title,
+                initials: cfileData.initials,
+                fullNames: cfileData.fullNames,
+                lastName: cfileData.lastName,
+                idNumber: cfileData.idNumber,
+                citizenship: cfileData.citizenship,
+                gender: cfileData.gender,
+                ethnicity: cfileData.ethnicity,
+                maritalStatus: cfileData.maritalStatus,
+                language: cfileData.language,
+                religion: cfileData.religion,
+          };
+          this.form.setValue({
+            title: this.cFile.title,
+                initials: this.cFile.initials,
+                fullNames: this.cFile.fullNames,
+                lastName: this.cFile.lastName,
+                idNumber: this.cFile.idNumber,
+                citizenship: this.cFile.citizenship,
+                gender: this.cFile.gender,
+                ethnicity: this.cFile.ethnicity,
+                maritalStatus: this.cFile.maritalStatus,
+                language: this.cFile.language,
+                religion: this.cFile.religion,
+          })
+        })
       }
     })
   }
 
   onSaveFile() {
-    console.log('five hunid');
-    
+    if (this.form.invalid) {
+      return;
+    }
+    this.isLoading = true;
+    if (this.mode === 'create') {
+      this.fileService.addCFile(
+        this.form.value.title,
+                this.form.value.initials,
+                this.form.value.fullNames,
+                this.form.value.lastName,
+                this.form.value.idNumber,
+                this.form.value.citizenship,
+                this.form.value.gender,
+                this.form.value.ethnicity,
+                this.form.value.maritalStatus,
+                this.form.value.language,
+                this.form.value.religion,
+      );
+    } else {
+      this.fileService.updateCFile(
+        this.cfileId,
+        this.form.value.title,
+        this.form.value.initials,
+                this.form.value.fullNames,
+                this.form.value.lastName,
+                this.form.value.idNumber,
+                this.form.value.citizenship,
+                this.form.value.gender,
+                this.form.value.ethnicity,
+                this.form.value.maritalStatus,
+                this.form.value.language,
+                this.form.value.religion,
+      );
+    }
+    this.form.reset();
   }
 
 }

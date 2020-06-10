@@ -1,4 +1,5 @@
 export interface CFile {
+    id: string
     title: string;
   initials: string;
   fullNames: string;
