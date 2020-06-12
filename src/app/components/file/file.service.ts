@@ -60,36 +60,10 @@ export class FileService {
         }>(`http://localhost:3000/api/cfiles/${id}`);
     }
 
-    addCFile(...formValues) {
-        const cfileData = {};
-        this.http
-        .post<{message: string; cfile: CFile }>(
-            'http://localhost:3000/api/cfiles',
-            cfileData
-        ).subscribe(responseData => {
-            const cfile: CFile = {
-                id: responseData.cfile.id,
-                title: responseData.cfile.title,
-                initials: responseData.cfile.initials,
-                fullNames: responseData.cfile.fullNames,
-                lastName: responseData.cfile.lastName,
-                idNumber: responseData.cfile.idNumber,
-                citizenship: responseData.cfile.citizenship,
-                gender: responseData.cfile.gender,
-                ethnicity: responseData.cfile.ethnicity,
-                maritalStatus: responseData.cfile.maritalStatus,
-                language: responseData.cfile.language,
-                religion: responseData.cfile.religion,
-            };
-            this.cfiles.push(cfile);
-            this.cFilesUpdated.next([...this.cfiles]);
-            this.router.navigate(['/']);
-        });
-    }
-    updateCFile(...formValues) {
-        let cfileData: CFile = {
-            id: id,
-                title:title,
+    addCFile(title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion) {
+        const cfile: CFile = {
+            id: null,
+                title: title,
                 initials: initials,
                 fullNames: fullNames,
                 lastName: lastName,
@@ -100,9 +74,37 @@ export class FileService {
                 maritalStatus: maritalStatus,
                 language: language,
                 religion: religion,
-        }
+        };
         this.http
-        .put(`http://localhost:3000/api/cfiles/${id}`, cfileData)
+        .post<{message: string; cfileId: string }>(
+            'http://localhost:3000/api/cfiles',
+            cfile
+        ).subscribe(responseData => {
+            const id = responseData.cfileId;
+            cfile.id = id;
+            this.cfiles.push(cfile);
+            this.cFilesUpdated.next([...this.cfiles]);
+            this.router.navigate(['/']);
+        });
+    }
+    
+    updateCFile(id, title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion) {
+        const cfile: CFile = {
+                id: id,
+                title: title,
+                initials: initials,
+                fullNames: fullNames,
+                lastName: lastName,
+                idNumber: idNumber,
+                citizenship: citizenship,
+                gender: gender,
+                ethnicity: ethnicity,
+                maritalStatus: maritalStatus,
+                language: language,
+                religion: religion,
+        };
+        this.http
+        .put(`http://localhost:3000/api/cfiles/${id}`, cfile)
         .subscribe(response => {
             const updatedCFiles = [...this.cfiles];
             const oldCFileIndex = updatedCFiles.findIndex(f => f.id === id);
@@ -122,4 +124,14 @@ export class FileService {
             };
         })
     }
+
+    deletePost(cfileId: string) {
+        this.http
+          .delete("http://localhost:3000/api/posts/" + cfileId)
+          .subscribe(() => {
+            const updatedPosts = this.cfiles.filter(post => post.id !== cfileId);
+            this.cfiles = updatedPosts;
+            this.cFilesUpdated.next([...this.cfiles]);
+          });
+      }
 }

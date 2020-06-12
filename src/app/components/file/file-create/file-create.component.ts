@@ -160,6 +160,8 @@ export class FileCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    console.log('-->clicked');
+    
     this.isLoading = true;
     if (this.mode === 'create') {
       this.fileService.addCFile(
@@ -191,6 +193,7 @@ export class FileCreateComponent implements OnInit {
                 this.form.value.religion,
       );
     }
+    this.isLoading = false;
     this.form.reset();
   }
 

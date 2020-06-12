@@ -1,6 +1,6 @@
-<app-loading-spinner (submit)="onSaveFile()" *ngIf="isLoading"></app-loading-spinner>
+<app-loading-spinner  *ngIf="isLoading"></app-loading-spinner>
   
-  <form [formGroup]="form" class="form-container__modal">
+  <form (submit)="onSaveFile()" [formGroup]="form" class="form-container__modal">
     <div class="form-header">
       <h1>{{ mode | titlecase }} File</h1>
     </div>
@@ -117,7 +117,7 @@
    
 
     <div class="form-group">
-      <button class="btn btn-full btn-login__color" type="button">Update</button>
+      <button class="btn btn-full btn-login__color" type="submit">{{ mode }}</button>
     </div>
    
   </div>

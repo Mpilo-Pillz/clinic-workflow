@@ -1,1 +1,24 @@
-<p>file-list works!</p>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+    <div *ngFor="let cfile of cfiles">
+      {{ cfile.title }}
+    
+    <p>{{ cfile.initials }}</p>
+    <p>{{ cfile.fullNames }}</p>
+    <p>{{ cfile.lastName }}</p>
+    <p>{{ cfile.idNumber }}</p>
+    <p>{{ cfile.citizenship }}</p>
+    <p>{{ cfile.gender }}</p>
+    <p>{{ cfile.initials }}</p>
+    <p>{{ cfile.ethnicity }}</p>
+    <p>{{ cfile.maritalStatus }}</p>
+    <p>{{ cfile.language }}</p>
+    <p>{{ cfile.religion }}</p>
+
+    <div>
+      <a [routerLink]="['/edit', cfile.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(cfile.id)">DELETE</button>
+    </div>
+</div>
+
+<p class="info-text mat-body-1" *ngIf="cfiles.length <= 0 && !isLoading">No files added yet!</p>
