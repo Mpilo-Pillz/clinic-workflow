@@ -9,10 +9,14 @@
       <div class="form-group">
         <label for="cars">Title:</label>
 
-    <select id="title">
-      <ng-container *ngFor="let title of titleDropDownValues">
-      <option [value]="title.title">{{ title.title | titlecase}}</option>
-    </ng-container>
+        <!-- <select multiple formControlName="cityName">
+          <option value="">Choose your city</option>
+          <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}
+          </option>
+       </select> -->
+
+    <select id="title" formControlName="title"> 
+      <option *ngFor="let title of titleDropDownValues" value="{{ title }}">{{ title | titlecase}}</option>
 </select>
       </div>
       <div class="form-group">
@@ -22,6 +26,7 @@
         type="text" 
         placeholder="initials"
         formControlName="initials"
+        value="mpilo"
         > 
         <p *ngIf="!form.get('initials').valid && form.get('initials').touched" class="form-error">Please enter valid initials</p>
       </div>
@@ -71,9 +76,9 @@
 
     <div class="form-group">
     <label for="gender">Gender:</label>
-    <select id="gender">
+    <select id="gender" formControlName="gender">
       <ng-container *ngFor="let sex of genderValues">
-      <option [value]="sex.sex">{{ sex.sex | titlecase}}</option>
+      <option [value]="sex">{{ sex | titlecase}}</option>
     </ng-container>
       
 </select>
@@ -81,28 +86,32 @@
 
     <div class="form-group">
       <label for="gender">Ethnicity</label>
-      <select id="ethnicity">
+      <select id="ethnicity" formControlName="ethnicity">
         <ng-container *ngFor="let race of ethnicityValues">
-        <option [value]="race.race">{{ race.race | titlecase}}</option>
+        <option [value]="race">{{ race | titlecase}}</option>
       </ng-container>
   </select>
       </div>
 
     <div class="form-group">
       <label for="maritalStatus">Marital Status:</label>
-      <select id="title">
+      <select id="title" formControlName="maritalStatus">
          <ng-container *ngFor="let status of maritalStatusValues">
-        <option value="status.status">{{ status.status | titlecase }}</option>
+        <option value="status">{{ status | titlecase }}</option>
       </ng-container>       
   </select>
       </div>
 
       <div class="form-group">
-        <label for="maritalStatus">Language:</label>
-        <select id="title">
-          <option value="female">English</option>
-    </select>
-        </div>
+        <label for="language">Language:</label>
+        <input
+        class="form-control" 
+        type="text" 
+        placeholder="language"
+        formControlName="language"
+        > 
+        <p *ngIf="!form.get('language').valid && form.get('language').touched" class="form-error">Please enter valid language</p>
+      </div>
 
         <div class="form-group">
           <label for="religion">Religion:</label>
@@ -123,4 +132,6 @@
   </div>
     </form>
     {{ form.valid}}
+
+    <button (click)="jordanFace()">take a shit</button>
   

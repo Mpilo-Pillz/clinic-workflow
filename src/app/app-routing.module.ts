@@ -7,7 +7,7 @@ import { FileCreateComponent } from './components/file/file-create/file-create.c
 const routes: Routes = [
   { path: '', component: FileListComponent },
   { path: 'create', component: FileCreateComponent },
-  { path: 'edit/:postId', component: FileCreateComponent },
+  { path: 'edit/:cfileId', component: FileCreateComponent },
 ];
 
 @NgModule({

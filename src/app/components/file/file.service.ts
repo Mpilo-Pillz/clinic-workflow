@@ -104,33 +104,23 @@ export class FileService {
                 religion: religion,
         };
         this.http
-        .put(`http://localhost:3000/api/cfiles/${id}`, cfile)
+        .patch(`http://localhost:3000/api/cfiles/${id}`, cfile)
         .subscribe(response => {
             const updatedCFiles = [...this.cfiles];
             const oldCFileIndex = updatedCFiles.findIndex(f => f.id === id);
-            const cfile: CFile = {
-                id: id,
-                title:title,
-                initials: initials,
-                fullNames: fullNames,
-                lastName: lastName,
-                idNumber: idNumber,
-                citizenship: citizenship,
-                gender: gender,
-                ethnicity: ethnicity,
-                maritalStatus: maritalStatus,
-                language: language,
-                religion: religion,
-            };
+            updatedCFiles[oldCFileIndex] = cfile;
+            this.cfiles = updatedCFiles;
+            this.cFilesUpdated.next([...this.cfiles]);
+            this.router.navigate(["/"]);
         })
     }
 
     deletePost(cfileId: string) {
         this.http
-          .delete("http://localhost:3000/api/posts/" + cfileId)
+          .delete("http://localhost:3000/api/cfiles/" + cfileId)
           .subscribe(() => {
-            const updatedPosts = this.cfiles.filter(post => post.id !== cfileId);
-            this.cfiles = updatedPosts;
+            const updatedCFiles = this.cfiles.filter(cfile => cfile.id !== cfileId);
+            this.cfiles = updatedCFiles;
             this.cFilesUpdated.next([...this.cfiles]);
           });
       }

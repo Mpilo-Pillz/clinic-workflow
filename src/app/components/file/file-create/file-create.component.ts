@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CFile } from '../file.model';
 import { FileService } from '../file.service';
@@ -27,77 +27,24 @@ export class FileCreateComponent implements OnInit {
   form: FormGroup;
   mode = 'create'; //make this private and use a setter
   private cfileId: string;
-  genderValues = [
-    {
-      sex: 'female',
-    },
-    {
-      sex: 'male'
-    },
-    {
-      sex: 'other'
-    }
-  ];
+  genderValues = ['female','male','other'];
 
-  ethnicityValues = [
-    {
-      race: 'african'
-    },
-    {
-      race: 'asian'
-    },
-    {
-      race: 'caucasian'
-    },
-    {
-      race: 'indian'
-    },
-    {
-      race: 'mixed'
-    }
-  ];
+  ethnicityValues = ['african','asian','caucasian','indian','mixed'];
 
-  maritalStatusValues = [
-    {
-      status: 'married'
-    },
-    {
-      status: 'single'
-    },
-    {
-      status: 'divorced'
-    },
-    {
-      status: 'partnership'
-    }
-  ];
+  maritalStatusValues = ['married','single','divorced','partnership'];
 
-  titleDropDownValues = [
-    {
-      title: 'mr',
-    },
-    {
-      title: 'mrs',
+  titleDropDownValues = ['mr','mrs','dr','professor','miss'];
 
-    },
-    {
-      title: 'dr',
-
-    }, {
-      title: 'professor',
-
-    },
-     {
-      title: 'miss'
-    }
-  ];
-  constructor(public route: ActivatedRoute, public fileService: FileService) { }
+  constructor(public route: ActivatedRoute, public fileService: FileService, private fb: FormBuilder) { }
   
   ngOnInit(): void {
     
     this.form = new FormGroup({
       initials: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(2)]
+      }),
+      title: new FormControl(this.titleDropDownValues[0], {
+        validators: [Validators.required],
       }),
       fullNames: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
@@ -108,17 +55,35 @@ export class FileCreateComponent implements OnInit {
       idNumber: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
+      gender: new FormControl(this.genderValues[0], {
+        validators: [Validators.required]
+      }),
+      ethnicity: new FormControl(this.ethnicityValues[0], {
+        validators: [Validators.required]
+      }),
+      maritalStatus: new FormControl(this.maritalStatusValues[0], {
+        validators: [Validators.required]
+      }),
       citizenship: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
-      religion: new FormControl(null, {
+      language: new FormControl('English', {
+        validators: [Validators.required, Validators.minLength(1)]
+      }),
+      religion: new FormControl('None', {
         validators: [Validators.required, Validators.minLength(1)]
       }),
 
     });
+    this.form.patchValue({
+      title: this.titleDropDownValues[0], 
+    });
+    
+    
+    // this.form.controls['title'].setValue(this.titleDropDownValues[3] );
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('fileId')) {
+      if (paramMap.has('cfileId')) {
         this.mode = 'edit';
         this.cfileId = paramMap.get('cfileId');
         this.isLoading = true;
@@ -193,8 +158,24 @@ export class FileCreateComponent implements OnInit {
                 this.form.value.religion,
       );
     }
+    
+    
     this.isLoading = false;
     this.form.reset();
+  }
+
+  jordanFace() {
+    console.log('bricks-->', this.form.value.title);
+    console.log('bricks-->', this.form.value.gender);
+    console.log('bricks-->', this.form.value.ethnicity);
+    console.log('real-->', this.form.value.religion);
+  }
+
+  changeDropDownValue(e) {
+    console.log(e.value)
+    this.form['title'].setValue(e.target.value, {
+      onlySelf: true
+    })
   }
 
 }

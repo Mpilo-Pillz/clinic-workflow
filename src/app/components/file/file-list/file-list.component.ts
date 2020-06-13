@@ -22,6 +22,8 @@ export class FileListComponent implements OnInit {
       .subscribe((cfiles: CFile[]) => {
         this.isLoading = false;
         this.cfiles = cfiles;
+        console.log('tel-->', cfiles);
+        
       });
   }
 
