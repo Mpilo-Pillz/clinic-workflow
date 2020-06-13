@@ -67,10 +67,10 @@ export class FileCreateComponent implements OnInit {
       citizenship: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
-      language: new FormControl('English', {
+      language: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
-      religion: new FormControl('None', {
+      religion: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
 

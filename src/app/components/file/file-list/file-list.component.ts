@@ -12,6 +12,7 @@ export class FileListComponent implements OnInit {
   cfiles: CFile[] = [];
   isLoading = false;
   private cfilesSub: Subscription;
+  detailsHidden = true;
 
   constructor(private fileService: FileService) { }
 
@@ -29,6 +30,10 @@ export class FileListComponent implements OnInit {
 
   onDelete(postId: string) {
     this.fileService.deletePost(postId);
+  }
+
+  toggleAccordion() {
+    this.detailsHidden = !this.detailsHidden;
   }
 
 }

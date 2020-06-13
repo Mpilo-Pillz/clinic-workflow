@@ -1,24 +1,55 @@
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<main class="paper shadow">
 
+  <div class="form-header">
+    <h1>File List</h1>
+  </div>
     <div *ngFor="let cfile of cfiles">
-      {{ cfile.title }}
+      <div class="accordion" (click)="toggleAccordion()">
+        <span>
+          {{ cfile.title | titlecase }} {{ cfile.initials | uppercase }} {{ cfile.lastName | titlecase }}
+        </span>
+        
+        <span>
+          <a class="edit-link" [routerLink]="['/edit', cfile.id]">EDIT</a>
+          <button class="delete-button" name="delete-button" (click)="onDelete(cfile.id)">DELETE</button>
+        </span>
+      </div> 
     
-    <p>{{ cfile.initials }}</p>
-    <p>{{ cfile.fullNames }}</p>
-    <p>{{ cfile.lastName }}</p>
-    <p>{{ cfile.idNumber }}</p>
-    <p>{{ cfile.citizenship }}</p>
-    <p>{{ cfile.gender }}</p>
-    <p>{{ cfile.initials }}</p>
-    <p>{{ cfile.ethnicity }}</p>
-    <p>{{ cfile.maritalStatus }}</p>
-    <p>{{ cfile.language }}</p>
-    <p>{{ cfile.religion }}</p>
+      <div class="patient-details panel" [hidden]="detailsHidden">
+     <p><strong>Initials:</strong> {{ cfile.initials }}</p>
+    <p><strong>Full names:</strong> {{ cfile.fullNames }}</p>
+    <p><strong>Last name:</strong> {{ cfile.lastName }}</p>
+    <p><strong>idNumber:</strong> {{ cfile.idNumber }}</p>
+    <p><strong>Citizenship:</strong> {{ cfile.citizenship }}</p>
+    <p><strong>Gender:</strong> {{ cfile.gender }}</p>
+    <p><strong>Ethnicity:</strong> {{ cfile.ethnicity }}</p>
+    <p><strong>Marital Status</strong> {{ cfile.maritalStatus }}</p>
+    <p><strong>Language:</strong> {{ cfile.language }}</p>
+    <p><strong>Religion:</strong> {{ cfile.religion }}</p>
+    
+    <p><strong>Chronic illnesses:</strong>None</p>
+    <p><strong>Last Check Up Date:</strong> 05 May 2020</p>
+    <p><strong>Doctor Consulted:</strong> Dr S. Nkhosi</p>
+    <p><strong>File Clinic:</strong> Simmonds Health Center</p>
+    <p><strong>Clinic Last Visited:</strong> Melrose Health Center</p>
 
-    <div>
-      <a [routerLink]="['/edit', cfile.id]">EDIT</a>
-      <button mat-button color="warn" (click)="onDelete(cfile.id)">DELETE</button>
-    </div>
+    <article>
+        <h3>Summary of last consultation</h3>
+        Patient visited having cold symptoms, running tummy and a fever. Patient was issued a octors note and told to be <br>
+        be off work for 3 days. PAtient was prescribed with the following medication:
+        <ul>
+          <li>4 Flu</li>
+          <li>Strepsils</li>
+          <li>Stool solidifiers</li>
+          <li>Electrolytes</li>
+        </ul>
+      
+    </article>
+
+  </div>
+    
 </div>
 
 <p class="info-text mat-body-1" *ngIf="cfiles.length <= 0 && !isLoading">No files added yet!</p>
+</main>
