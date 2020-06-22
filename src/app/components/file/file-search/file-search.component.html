@@ -1,0 +1,18 @@
+<section class="file-search-section">
+    <form [formGroup]="form" class="search-area">
+        <input (input)="onSearch($event.target.value)" class="input-search" type="number" name="input-search" placeholder="Enter patient's ID number" formControlName="idnumber">
+        <p *ngIf="form.get('idnumber').invalid && form.get('idnumber').touched" class="form-error">Please enter a valid id Number</p>
+        <button class="btn-rnd btn-rnd--white" name="search-button" aria-label="search" (click)="searchFile()">Search</button>
+    </form>
+    <div class="accordion" *ngFor="let patient of patientInfo">
+        <span>
+          {{ patient.title | titlecase }} {{ patient.initials | uppercase }} {{ patient.lastName | titlecase }}
+        </span>
+        
+        <span>
+          <a class="edit-link" [routerLink]="['/edit', patient.id]">EDIT</a>
+        </span>
+      </div>
+</section>
+
+ 

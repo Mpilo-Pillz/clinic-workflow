@@ -1,0 +1,21 @@
+.btn-rnd {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 100px;
+
+    &--white {
+        background-color: #fff;
+        color: #464545;
+    }
+
+    &:hover{
+        // text-transform: uppercase;
+        transform: translateY(-3px);
+    }
+    &:active {
+        transform: translateY(-1px);
+    }
+    
+    &:focus{ outline-color: thin dotted }
+}
+

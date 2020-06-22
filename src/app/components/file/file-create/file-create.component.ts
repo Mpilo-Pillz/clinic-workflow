@@ -115,10 +115,10 @@ export class FileCreateComponent implements OnInit {
                 maritalStatus: this.cFile.maritalStatus,
                 language: this.cFile.language,
                 religion: this.cFile.religion,
-          })
-        })
+          });
+        });
       }
-    })
+    });
   }
 
   onSaveFile() {

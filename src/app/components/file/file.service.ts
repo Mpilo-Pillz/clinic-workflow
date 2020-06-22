@@ -62,6 +62,27 @@ export class FileService {
         }>(`${this.apiUrl}/api/cfiles/${id}`);
     }
 
+    searchCFile(idnumber: string) {
+        return this.http.get<{
+            _id: string,
+            title: string,
+            initials: string,
+            fullNames: string,
+            lastName: string,
+            idNumber: string,
+            citizenship: string,
+            gender: string,
+            ethnicity: string,
+            maritalStatus: string,
+            language: string,
+            religion: string,
+        }>(`${this.apiUrl}/api/cfiles/patient`, {
+            params: {
+              search: idnumber
+            }
+        });
+    }
+
     addCFile(title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion) {
         const cfile: CFile = {
             id: null,

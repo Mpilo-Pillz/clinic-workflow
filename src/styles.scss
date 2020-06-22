@@ -1,11 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-body {
-    background-color: #d1cbcb;
-    font-family: 'Noto Sans JP', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    padding: 30px 0 60px 0;
-   
-}
+@import './styles/reset.scss';
+@import './styles/buttons.scss';
+
 
 .paper {
     max-width: 900px;
@@ -28,3 +23,4 @@ body {
     margin-bottom: 3rem;
     text-align: center;
 }
+
