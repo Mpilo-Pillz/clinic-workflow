@@ -4,20 +4,20 @@
     <div class="form-header">
       <h1>{{ mode | titlecase }} File</h1>
     </div>
-    <div class="form-input__section">
+    <div class="form-input__section bg__white">
     
-      <div class="form-group form__flex--col">
-        <label for="cars">Title:</label>
-    <select id="title" formControlName="title"> 
+      <div class="">
+        <label class="txt-tertiary" for="cars">Title:</label>
+    <select class="txt-secondary" id="title" formControlName="title"> 
       <option *ngFor="let title of titleDropDownValues" value="{{ title }}">{{ title | titlecase}}</option>
 </select>
 
       </div>
-      <hr>
-      <div class="form-group form__flex--col">
-        <label for="initials">Initials:</label>
+      
+      <div class="">
+        <label class="txt-tertiary" for="initials">Initials:</label>
         <input 
-        class="form-control"
+        class="form-control txt-secondary"
         type="text" 
         placeholder="initials"
         formControlName="initials"
@@ -25,19 +25,19 @@
         > 
         <p *ngIf="!form.get('initials').valid && form.get('initials').touched" class="form-error">Please enter valid initials</p>
       </div>
-      <hr>
-      <div class="form-group form__flex--col">
-        <label for="fullNames">Full Names:</label>
+      
+      <div class="">
+        <label class="txt-tertiary" for="fullNames">Full Names:</label>
       <input 
-      class="form-control"
+      class="form-control txt-secondary"
       type="text" 
       placeholder="full names"
       formControlName="fullNames"
       > 
       <p *ngIf="!form.get('fullNames').valid && form.get('fullNames').touched" class="form-error">Please enter valid full names</p>
     </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <label for="lastName">Last Name:</label>
       <input
       class="form-control" 
@@ -47,8 +47,8 @@
       > 
       <p *ngIf="!form.get('lastName').valid && form.get('lastName').touched" class="form-error">Please enter valid last name</p>
     </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <label for="lastName">ID Number:</label>
       <input
       class="form-control" 
@@ -58,8 +58,8 @@
       > 
       <p *ngIf="!form.get('idNumber').valid && form.get('idNumber').touched" class="form-error">Please enter valid id number</p>
     </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <label for="citizenship">Citizenship:</label>
       <input
       class="form-control" 
@@ -69,8 +69,8 @@
       > 
       <p *ngIf="!form.get('citizenship').valid && form.get('citizenship').touched" class="form-error">Please enter valid citizenship</p>
     </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
     <label for="gender">Gender:</label>
     <select id="gender" formControlName="gender">
       <option *ngFor="let sex of genderValues" [value]="sex">{{ sex | titlecase}}</option>
@@ -79,8 +79,8 @@
 </select>
 
     </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <label for="gender">Ethnicity</label>
       <select id="ethnicity" formControlName="ethnicity">
         <ng-container *ngFor="let race of ethnicityValues">
@@ -88,8 +88,8 @@
       </ng-container>
   </select>
       </div>
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <label for="maritalStatus">Marital Status:</label>
       <select id="title" formControlName="maritalStatus">
          <ng-container *ngFor="let status of maritalStatusValues">
@@ -97,8 +97,8 @@
       </ng-container>       
   </select>
       </div>
-<hr>
-      <div class="form-group form__flex--col">
+
+      <div class="">
         <label for="language">Language:</label>
         <input
         class="form-control" 
@@ -108,8 +108,8 @@
         > 
         <p *ngIf="!form.get('language').valid && form.get('language').touched" class="form-error">Please enter valid language</p>
       </div>
-<hr>
-        <div class="form-group form__flex--col">
+
+        <div class="">
           <label for="religion">Religion:</label>
           <input
           class="form-control" 
@@ -120,14 +120,11 @@
           <p *ngIf="!form.get('religion').valid && form.get('religion').touched" class="form-error">Please enter valid religion</p>
         </div>
    
-<hr>
-    <div class="form-group form__flex--col">
+
+    <div class="">
       <button class="btn btn-half btn--purple" type="submit">{{ mode }}</button>
     </div>
    
   </div>
     </form>
-    <!-- {{ form.valid}}
-
-    <button (click)="jordanFace()">take a shit</button> -->
   </main>

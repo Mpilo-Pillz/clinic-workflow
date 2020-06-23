@@ -1,6 +1,7 @@
 @import './styles/reset.scss';
 @import './styles/buttons.scss';
-
+@import './styles/form.scss';
+@import './styles/layouts.scss';
 
 .paper {
     max-width: 900px;
@@ -12,6 +13,10 @@
 
 .shadow {
     box-shadow: 2px 6px 40px 12px #555454;
+}
+
+.bg__white {
+    background-color: #fff;
 }
 
 

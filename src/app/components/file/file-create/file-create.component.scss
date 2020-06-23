@@ -1,13 +1,27 @@
-input, button, select {
-    border: none;
-    background-color: #fac682;
+label {
+    font: 1rem;
+    font-weight: bold;
 }
 
-label {
-    color: #4b4949;
-    font-size: 1rem;
-    font-weight: 700;
+
+
+
+input, button, select {
+    border: none;
+    margin: .7rem;
+    padding: .5rem;
+    // background-color: #fac682;
 }
+
+.form-input__section {
+    padding: 2rem;
+}
+
+// label {
+//     color: #4b4949;
+//     font-size: 1rem;
+//     font-weight: 700;
+// }
 
 // .btn {
 //     color: seashell;
@@ -24,19 +38,19 @@ label {
 //     background-color: purple;
 // }
 
-.form-control {
-    color: purple;
-    font-size: 2rem;
-    padding: 10px;
-}
+// .form-control {
+//     color: purple;
+//     font-size: 2rem;
+//     padding: 10px;
+// }
 
 
-.border__reset {
-    border: none;
-}
+// .border__reset {
+//     border: none;
+// }
 
 
-.form__flex--col {
-    display: flex;
-    flex-direction: column;
-}
+// .form__flex--col {
+//     display: flex;
+//     flex-direction: column;
+// }
