@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FileService } from '../file.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-search',
@@ -13,7 +14,8 @@ export class FileSearchComponent implements OnInit {
   patientInfo = [];
   form: FormGroup;
   idNumberValue;
-  constructor(private fileService: FileService) { }
+  searchError;
+  constructor(private fileService: FileService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -46,6 +48,10 @@ export class FileSearchComponent implements OnInit {
             religion: cfileData.religion,
           };
       this.patientInfo.push(this.cFile);
+      this.router.navigate(['/edit', this.cFile.id])
+        },
+        ({ error }) => {
+          this.searchError = error.message;
         });
         console.log('mub--<',this.patientInfo);
         
