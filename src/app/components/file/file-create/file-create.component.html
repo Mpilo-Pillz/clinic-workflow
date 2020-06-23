@@ -7,7 +7,7 @@
     <div class="form-input__section bg__white">
     
       <div class="">
-        <label class="txt-tertiary" for="cars">Title:</label>
+        <label class="txt-tertiary" for="title">Title:</label>
     <select class="txt-secondary" id="title" formControlName="title"> 
       <option *ngFor="let title of titleDropDownValues" value="{{ title }}">{{ title | titlecase}}</option>
 </select>
@@ -18,7 +18,8 @@
         <label class="txt-tertiary" for="initials">Initials:</label>
         <input 
         class="form-control txt-secondary"
-        type="text" 
+        type="text"
+        id="initials" 
         placeholder="initials"
         formControlName="initials"
         value="mpilo"
@@ -30,7 +31,8 @@
         <label class="txt-tertiary" for="fullNames">Full Names:</label>
       <input 
       class="form-control txt-secondary"
-      type="text" 
+      type="text"
+      id="fullNames" 
       placeholder="full names"
       formControlName="fullNames"
       > 
@@ -41,7 +43,8 @@
       <label for="lastName">Last Name:</label>
       <input
       class="form-control" 
-      type="text" 
+      type="text"
+      id="lastName"
       placeholder="last name"
       formControlName="lastName"
       > 
@@ -49,10 +52,11 @@
     </div>
 
     <div class="">
-      <label for="lastName">ID Number:</label>
+      <label for="idNumber">ID Number:</label>
       <input
       class="form-control" 
-      type="text" 
+      type="text"
+      id="idNumber" 
       placeholder="idNumber"
       formControlName="idNumber"
       > 
@@ -63,7 +67,8 @@
       <label for="citizenship">Citizenship:</label>
       <input
       class="form-control" 
-      type="text" 
+      type="text"
+      id="citizenship" 
       placeholder="citizenship"
       formControlName="citizenship"
       > 
@@ -81,7 +86,7 @@
     </div>
 
     <div class="">
-      <label for="gender">Ethnicity</label>
+      <label for="ethnicity">Ethnicity</label>
       <select id="ethnicity" formControlName="ethnicity">
         <ng-container *ngFor="let race of ethnicityValues">
         <option [value]="race">{{ race | titlecase}}</option>
@@ -91,7 +96,7 @@
 
     <div class="">
       <label for="maritalStatus">Marital Status:</label>
-      <select id="title" formControlName="maritalStatus">
+      <select id="maritalStatus" formControlName="maritalStatus">
          <ng-container *ngFor="let status of maritalStatusValues">
         <option value="status">{{ status | titlecase }}</option>
       </ng-container>       
@@ -102,7 +107,8 @@
         <label for="language">Language:</label>
         <input
         class="form-control" 
-        type="text" 
+        type="text"
+        id="language" 
         placeholder="language"
         formControlName="language"
         > 
@@ -113,7 +119,8 @@
           <label for="religion">Religion:</label>
           <input
           class="form-control" 
-          type="text" 
+          type="text"
+          id="religion" 
           placeholder="religion"
           formControlName="religion"
           > 
@@ -122,7 +129,7 @@
    
 
     <div class="">
-      <button class="btn btn-half btn--purple" type="submit">{{ mode }}</button>
+      <button class="btn btn-half btn--purple" type="submit" [name]="mode" aria-label="submit">{{ mode }}</button>
     </div>
    
   </div>

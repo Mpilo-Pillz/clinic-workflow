@@ -12,7 +12,7 @@
         
         <span>
           <a class="edit-link" [routerLink]="['/edit', cfile.id]">EDIT</a>
-          <button class="delete-button" name="delete-button" (click)="onDelete(cfile.id)">DELETE</button>
+          <button class="delete-button" name="delete-button" aria-label="delete" (click)="onDelete(cfile.id)">DELETE</button>
         </span>
       </div> 
     
