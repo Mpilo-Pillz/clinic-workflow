@@ -1,5 +1,5 @@
 label {
-    font: 1rem;
+    font: 2rem;
     font-weight: bold;
 }
 
@@ -15,6 +15,24 @@ input, button, select {
 
 .form-input__section {
     padding: 2rem;
+}
+
+.txt-tertiary {
+    font-size: 1.7rem;
+    margin: 2rem;
+}
+
+.txt-secondary {
+    font-size: 1.5rem;
+}
+
+.consultation-notes {
+    text-align: center;
+    margin: 2rem;
+}
+
+.notes {
+    width: 40vw;
 }
 
 // label {

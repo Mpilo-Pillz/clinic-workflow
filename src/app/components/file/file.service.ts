@@ -31,7 +31,8 @@ export class FileService {
                         ethnicity: cfile.ethnicity,
                         maritalStatus: cfile.maritalStatus,
                         language: cfile.language,
-                        religion: cfile.religion
+                        religion: cfile.religion,
+                        notes: cfile.notes
                     };
                 });
             })
@@ -59,6 +60,7 @@ export class FileService {
             maritalStatus: string,
             language: string,
             religion: string,
+            notes: string
         }>(`${this.apiUrl}/api/cfiles/${id}`);
     }
 
@@ -76,6 +78,7 @@ export class FileService {
             maritalStatus: string,
             language: string,
             religion: string,
+            notes: string
         }>(`${this.apiUrl}/api/cfiles/patient`, {
             params: {
               search: idnumber
@@ -83,20 +86,21 @@ export class FileService {
         });
     }
 
-    addCFile(title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion) {
+    addCFile(title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion, notes) {
         const cfile: CFile = {
             id: null,
-                title: title,
-                initials: initials,
-                fullNames: fullNames,
-                lastName: lastName,
-                idNumber: idNumber,
-                citizenship: citizenship,
-                gender: gender,
-                ethnicity: ethnicity,
-                maritalStatus: maritalStatus,
-                language: language,
-                religion: religion,
+                title,
+                initials,
+                fullNames,
+                lastName,
+                idNumber,
+                citizenship,
+                gender,
+                ethnicity,
+                maritalStatus,
+                language,
+                religion,
+                notes
         };
         this.http
         .post<{message: string; cfileId: string }>(
@@ -111,20 +115,22 @@ export class FileService {
         });
     }
     
-    updateCFile(id, title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion) {
+    updateCFile(id, title, initials, fullNames, lastName, idNumber, 
+                citizenship, gender, ethnicity, maritalStatus, language, religion, notes) {
         const cfile: CFile = {
-                id: id,
-                title: title,
-                initials: initials,
-                fullNames: fullNames,
-                lastName: lastName,
-                idNumber: idNumber,
-                citizenship: citizenship,
-                gender: gender,
-                ethnicity: ethnicity,
-                maritalStatus: maritalStatus,
-                language: language,
-                religion: religion,
+                id,
+                title,
+                initials,
+                fullNames,
+                lastName,
+                idNumber,
+                citizenship,
+                gender,
+                ethnicity,
+                maritalStatus,
+                language,
+                religion,
+                notes
         };
         this.http
         .patch(`${this.apiUrl}/api/cfiles/${id}`, cfile)
@@ -134,7 +140,7 @@ export class FileService {
             updatedCFiles[oldCFileIndex] = cfile;
             this.cfiles = updatedCFiles;
             this.cFilesUpdated.next([...this.cfiles]);
-            this.router.navigate(["/"]);
+            this.router.navigate(['/']);
         })
     }
 

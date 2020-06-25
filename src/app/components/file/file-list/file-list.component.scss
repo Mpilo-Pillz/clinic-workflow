@@ -1,25 +1,25 @@
 article {
-    padding: 20px;
+    padding: 2rem;
 }
 .accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    padding: 1.8rem;
     width: 100%;
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
-    margin: 10px;
+    margin: 1rem;
     display: flex;
     justify-content: space-between;
   }
 
 .panel {
-    padding: 0 18px;
+    padding: 0 1.8rem;
     background-color: white;
-    font-size: 1rem;
+    font-size: 1.6rem;
     overflow: hidden;
   }
 
@@ -28,8 +28,8 @@ article {
   }
 
   .edit-link {
-      font-size: 1rem;
-      padding: 5px 10px;
+      font-size: 1.6rem;
+      padding: .5rem 1rem;
       background-color: rebeccapurple;
       color: seashell;
       text-decoration: none;

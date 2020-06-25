@@ -22,7 +22,6 @@
         id="initials" 
         placeholder="initials"
         formControlName="initials"
-        value="mpilo"
         > 
         <p *ngIf="!form.get('initials').valid && form.get('initials').touched" class="form-error">Please enter valid initials</p>
       </div>
@@ -40,9 +39,9 @@
     </div>
 
     <div class="">
-      <label for="lastName">Last Name:</label>
+      <label class="txt-tertiary" for="lastName">Last Name:</label>
       <input
-      class="form-control" 
+      class="form-control txt-secondary" 
       type="text"
       id="lastName"
       placeholder="last name"
@@ -52,9 +51,9 @@
     </div>
 
     <div class="">
-      <label for="idNumber">ID Number:</label>
+      <label class="txt-tertiary" for="idNumber">ID Number:</label>
       <input
-      class="form-control" 
+      class="form-control txt-secondary" 
       type="text"
       id="idNumber" 
       placeholder="idNumber"
@@ -64,9 +63,9 @@
     </div>
 
     <div class="">
-      <label for="citizenship">Citizenship:</label>
+      <label class="txt-tertiary" for="citizenship">Citizenship:</label>
       <input
-      class="form-control" 
+      class="form-control txt-secondary" 
       type="text"
       id="citizenship" 
       placeholder="citizenship"
@@ -76,8 +75,8 @@
     </div>
 
     <div class="">
-    <label for="gender">Gender:</label>
-    <select id="gender" formControlName="gender">
+    <label class="txt-tertiary" for="gender">Gender:</label>
+    <select class="txt-secondary" id="gender" formControlName="gender">
       <option *ngFor="let sex of genderValues" [value]="sex">{{ sex | titlecase}}</option>
   
       
@@ -86,8 +85,8 @@
     </div>
 
     <div class="">
-      <label for="ethnicity">Ethnicity</label>
-      <select id="ethnicity" formControlName="ethnicity">
+      <label class="txt-tertiary" for="ethnicity">Ethnicity</label>
+      <select class="txt-secondary" id="ethnicity" formControlName="ethnicity">
         <ng-container *ngFor="let race of ethnicityValues">
         <option [value]="race">{{ race | titlecase}}</option>
       </ng-container>
@@ -95,18 +94,18 @@
       </div>
 
     <div class="">
-      <label for="maritalStatus">Marital Status:</label>
-      <select id="maritalStatus" formControlName="maritalStatus">
+      <label class="txt-tertiary" for="maritalStatus">Marital Status:</label>
+      <select class="txt-secondary" id="maritalStatus" formControlName="maritalStatus">
          <ng-container *ngFor="let status of maritalStatusValues">
-        <option value="status">{{ status | titlecase }}</option>
+        <option [value]="status">{{ status | titlecase }}</option>
       </ng-container>       
   </select>
       </div>
 
       <div class="">
-        <label for="language">Language:</label>
+        <label class="txt-tertiary" for="language">Language:</label>
         <input
-        class="form-control" 
+        class="form-control txt-secondary" 
         type="text"
         id="language" 
         placeholder="language"
@@ -116,9 +115,9 @@
       </div>
 
         <div class="">
-          <label for="religion">Religion:</label>
+          <label class="txt-tertiary" for="religion">Religion:</label>
           <input
-          class="form-control" 
+          class="form-control txt-secondary" 
           type="text"
           id="religion" 
           placeholder="religion"
@@ -126,9 +125,17 @@
           > 
           <p *ngIf="!form.get('religion').valid && form.get('religion').touched" class="form-error">Please enter valid religion</p>
         </div>
+
+        <div class="consultation-notes">
+          <label class="txt-tertiary d-block" for="summary">Summary of Consultation:</label>
+          <textarea class="notes" 
+          name="consultation-summary"
+          formControlName="notes" 
+          id="summary" placeholder="Consultation notes" cols="30" rows="10"></textarea>
+        </div>
    
 
-    <div class="">
+    <div class="el--align-center">
       <button class="btn btn-half btn--purple" type="submit" [name]="mode" aria-label="submit">{{ mode }}</button>
     </div>
    

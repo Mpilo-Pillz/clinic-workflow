@@ -4,15 +4,15 @@
 @import './styles/layouts.scss';
 
 .paper {
-    max-width: 900px;
+    max-width: 90rem;
     background-color: #fac682;
     margin: 0 auto;
-    padding: 20px 70px;
+    padding: 2rem 7rem;
     min-height: 100vh;
 }
 
 .shadow {
-    box-shadow: 2px 6px 40px 12px #555454;
+    box-shadow: .2rem .6rem 4rem 1.2rem #555454;
 }
 
 .bg__white {

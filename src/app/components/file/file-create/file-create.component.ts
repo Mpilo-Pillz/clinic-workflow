@@ -21,6 +21,7 @@ export class FileCreateComponent implements OnInit {
   maritalStatus;
   language;
   religion;
+  notes;
   
   cFile: CFile;
   isLoading = false;
@@ -73,10 +74,13 @@ export class FileCreateComponent implements OnInit {
       religion: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(1)]
       }),
+      notes: new FormControl(null, {
+        validators: [Validators.minLength(1)]
+      }),
 
     });
     this.form.patchValue({
-      title: this.titleDropDownValues[0], 
+      title: this.titleDropDownValues[0],
     });
     
     
@@ -102,6 +106,7 @@ export class FileCreateComponent implements OnInit {
                 maritalStatus: cfileData.maritalStatus,
                 language: cfileData.language,
                 religion: cfileData.religion,
+                notes: cfileData.notes
           };
           this.form.setValue({
             title: this.cFile.title,
@@ -115,6 +120,7 @@ export class FileCreateComponent implements OnInit {
                 maritalStatus: this.cFile.maritalStatus,
                 language: this.cFile.language,
                 religion: this.cFile.religion,
+                notes: this.cFile.notes
           });
         });
       }
@@ -141,6 +147,7 @@ export class FileCreateComponent implements OnInit {
                 this.form.value.maritalStatus,
                 this.form.value.language,
                 this.form.value.religion,
+                this.form.value.notes
       );
     } else {
       this.fileService.updateCFile(
@@ -156,6 +163,7 @@ export class FileCreateComponent implements OnInit {
                 this.form.value.maritalStatus,
                 this.form.value.language,
                 this.form.value.religion,
+                this.form.value.notes
       );
     }
     
@@ -177,5 +185,4 @@ export class FileCreateComponent implements OnInit {
       onlySelf: true
     })
   }
-
 }

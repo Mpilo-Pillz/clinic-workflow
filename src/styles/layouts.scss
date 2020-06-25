@@ -1,3 +1,7 @@
+.d-block {
+    display: block;
+}
+
 .d-flex {
     display: flex;
 
@@ -5,4 +9,14 @@
         flex-direction: column;
         justify-content: space-between;
     }
+
+    &--row-spc-btwn {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
+
+.el--align-center {
+    text-align: center;
+}
+
