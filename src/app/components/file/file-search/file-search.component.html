@@ -2,7 +2,7 @@
     <form [formGroup]="form" class="search-area ">
         <input (input)="onSearch($event.target.value)" class="input-search form-control" type="number" name="input-search" placeholder="Enter patient's ID number" formControlName="idnumber">
         <p *ngIf="form.get('idnumber').invalid && form.get('idnumber').touched" class="form-error">Please enter a valid id Number</p>
-        <button class="btn-rnd btn-rnd--white form-control" name="search-button" aria-label="search" (click)="searchFile()">Search</button>
+        <button class="btn-rnd btn-rnd--white form-control shadow-md" name="search-button" aria-label="search" (click)="searchFile()">Search</button>
     </form>
     <p>{{ searchError }}</p>
 </section>

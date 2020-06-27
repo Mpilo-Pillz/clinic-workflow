@@ -21,7 +21,15 @@
     border-radius: 100px;
     color: $color-white;
     font-weight: bold;
+    margin-bottom: 1rem;
     padding: 1rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    transition: transform .3s;
+
+    &:hover {
+        background-color: #d47e0d;
+        transform: translateY(-1.5rem) scale(1.03);
+    }
 }
 
 .input-search {

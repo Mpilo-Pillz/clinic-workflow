@@ -22,6 +22,10 @@
     box-shadow: .2rem .6rem 4rem 1.2rem #555454;
 }
 
+.shadow-md {
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
+
 .bg__white {
     background-color: #fff;
 }
