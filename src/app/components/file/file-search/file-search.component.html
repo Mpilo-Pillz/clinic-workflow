@@ -15,4 +15,30 @@
       <a class="edit-link" [routerLink]="['/edit', patient.id]">EDIT</a>
     </span>
   </div> -->
+
+  <section class="section-about">
+            
+    <div class="row d-flex d-flex--justify-center">
+        <div class="col-1-of-4">
+            <div class="feature-box" routerLink="/create">
+                <i class="feature-box__icon icon-basic-world"></i>
+                <h3 class="heading-tertiary">Add Patient</h3>
+                <p class="feature-box__text">
+                    Click here to capture a new patient file by adding the pateints personal details on the next page.
+                </p>
+            </div>
+        </div>
+        <div class="col-1-of-4">
+            <div class="feature-box" routerLink="/list">
+                <i class="feature-box__icon icon-basic-compass"></i>
+                <h3 class="heading-tertiary">View Patents</h3>
+                <p class="feature-box__text">
+                  Click here to view patient files added previously. This is only avaliable for view and use by admins .
+                </p>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
  

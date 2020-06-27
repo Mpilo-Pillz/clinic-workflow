@@ -3,6 +3,13 @@
 @import './styles/form.scss';
 @import './styles/layouts.scss';
 
+@import './styles/abstracts/mixins';
+@import './styles/abstracts/variables';
+
+@import './styles/components/feature-box';
+
+@import './styles/layout/grid.scss';
+
 .paper {
     max-width: 90rem;
     background-color: #fac682;

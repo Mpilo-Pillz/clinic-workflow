@@ -24,7 +24,12 @@ article {
   }
 
   .delete-button {
-      display: none
+    //   display: none
+    font-size: 1.6rem;
+      padding: .5rem 1rem;
+      background-color: seashell;
+      color: rebeccapurple;
+      border: none;
   }
 
   .edit-link {
