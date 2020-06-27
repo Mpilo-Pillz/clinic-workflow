@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingSpinnerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
+    // this.renderer[!this.toggled ? 'addClass': 'removeClass'](document.body, 'body--position__fixed')
   }
 
 }
