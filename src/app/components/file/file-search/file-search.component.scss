@@ -3,11 +3,11 @@
 .file-search-section {
     height: 95vh;
     background: linear-gradient(to right bottom, 
-    rgba(238, 199, 147, 1), 
-    rgba(246, 160, 48, 1));
-    // url('https://picsum.photos/200/300?grayscale');
+    rgba(238, 199, 147, .8), 
+    rgba(246, 160, 48, .8)),
+    url('https://images.unsplash.com/photo-1542884748-2b87b36c6b90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60');
     background-size: cover;
-    background-position: top;
+    background-position: center;
     // margin: 0 3rem;
     text-align: center;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);

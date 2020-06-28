@@ -10,13 +10,22 @@ input, button, select {
     border: none;
     margin: .7rem;
     padding: .5rem;
-    // background-color: #fac682;
+    background-color: transparent;
+    // color: white;
+    font-weight: bold;
 }
 
 .form-input__section {
     padding: 4rem 2rem;
     margin-bottom: 5rem;
     border-radius: 10px;
+
+    background: linear-gradient(to right bottom, 
+    rgba(218, 216, 214, 0.8), 
+    rgb(255, 255, 255)),
+    url('https://images.unsplash.com/photo-1512069511692-b82d787265cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60');
+    background-size: cover;
+    background-position: center;
 }
 
 .txt-tertiary {
@@ -37,6 +46,8 @@ input, button, select {
     width: 75%;
     border: 1px solid purple;
 }
+
+
 
 // label {
 //     color: #4b4949;
