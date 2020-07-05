@@ -126,6 +126,18 @@
           <p *ngIf="!form.get('religion').valid && form.get('religion').touched" class="form-error">Please enter valid religion</p>
         </div>
 
+        <div class="">
+          <label class="txt-tertiary" for="income">Income:</label>
+          <input
+          class="form-control txt-secondary" 
+          type="text"
+          id="income" 
+          placeholder="income"
+          formControlName="income"
+          > 
+          <p *ngIf="!form.get('religion').valid && form.get('religion').touched" class="form-error">Please enter income</p>
+        </div>
+
         <div class="consultation-notes">
           <label class="txt-tertiary d-block" for="summary">Summary of Consultation:</label>
           <textarea class="notes" 

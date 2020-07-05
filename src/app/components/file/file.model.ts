@@ -11,5 +11,6 @@ export interface CFile {
     maritalStatus: string;
     language: string;
     religion: string;
+    income: string;
     notes: string;
 }

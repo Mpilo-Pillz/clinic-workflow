@@ -32,6 +32,7 @@ export class FileService {
                         maritalStatus: cfile.maritalStatus,
                         language: cfile.language,
                         religion: cfile.religion,
+                        income: cfile.income,
                         notes: cfile.notes
                     };
                 });
@@ -60,6 +61,7 @@ export class FileService {
             maritalStatus: string,
             language: string,
             religion: string,
+            income: string,
             notes: string
         }>(`${this.apiUrl}/api/cfiles/${id}`);
     }
@@ -78,6 +80,7 @@ export class FileService {
             maritalStatus: string,
             language: string,
             religion: string,
+            income: string,
             notes: string
         }>(`${this.apiUrl}/api/cfiles/patient`, {
             params: {
@@ -86,7 +89,10 @@ export class FileService {
         });
     }
 
-    addCFile(title, initials, fullNames, lastName, idNumber, citizenship, gender, ethnicity, maritalStatus, language, religion, notes) {
+    addCFile(
+        title, initials, fullNames, lastName, idNumber, 
+        citizenship, gender, ethnicity, maritalStatus, language, religion, 
+        income, notes) {
         const cfile: CFile = {
             id: null,
                 title,
@@ -100,6 +106,7 @@ export class FileService {
                 maritalStatus,
                 language,
                 religion,
+                income,
                 notes
         };
         this.http
@@ -116,7 +123,7 @@ export class FileService {
     }
     
     updateCFile(id, title, initials, fullNames, lastName, idNumber, 
-                citizenship, gender, ethnicity, maritalStatus, language, religion, notes) {
+                citizenship, gender, ethnicity, maritalStatus, language, religion, income, notes) {
         const cfile: CFile = {
                 id,
                 title,
@@ -130,6 +137,7 @@ export class FileService {
                 maritalStatus,
                 language,
                 religion,
+                income,
                 notes
         };
         this.http
