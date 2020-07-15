@@ -89,6 +89,11 @@ export class FileService {
         });
     }
 
+    getPatientConsultations(idnumber: string) {
+        return this.http.get<{
+        }>(`${this.apiUrl}/api/cfiles/${idnumber}/consultations`, {});
+    }
+
     addCFile(
         title, initials, fullNames, lastName, idNumber, 
         citizenship, gender, ethnicity, maritalStatus, language, religion, 

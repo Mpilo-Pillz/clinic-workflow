@@ -8,6 +8,8 @@ import { FileCreateComponent } from './components/file/file-create/file-create.c
 import { FileListComponent } from './components/file/file-list/file-list.component';
 import { LoadingSpinnerComponent } from './components/utilities/loading-spinner/loading-spinner.component';
 import { FileSearchComponent } from './components/file/file-search/file-search.component';
+import { ConsultationListComponent } from './consultation/consultation-list/consultation-list.component';
+import { ConsultationCreateComponent } from './consultation/consultation-create/consultation-create.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FileSearchComponent } from './components/file/file-search/file-search.c
     FileCreateComponent,
     FileListComponent,
     LoadingSpinnerComponent,
-    FileSearchComponent
+    FileSearchComponent,
+    ConsultationListComponent,
+    ConsultationCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,30 @@ export class FileSearchComponent implements OnInit {
   onSearch(value: string) {
     this.idNumberValue = value;
   }
+
+  searchPatientConsultations() {
+  
+    this.isLoading = true;
+    this.fileService.getPatientConsultations(this.idNumberValue).subscribe(cfileData => {
+      this.isLoading = false;
+      console.log('heyiii-->',cfileData);
+      console.log('hhaha-->',cfileData[0]);
+      
+      this.cFile = {
+        id: cfileData[0]._id,
+        idNumber: cfileData[0].idNumber,
+      };
+      
+      // this.router.navigate(['/list', this.cFile.id])
+      this.router.navigate(['/list', this.cFile.idNumber])
+        },
+        ({ error }) => {
+          this.searchError = error.message;
+        });
+        console.log('mub--<',this.patientInfo);
+        
+  }
+
   searchFile() {
   
     this.isLoading = true;
