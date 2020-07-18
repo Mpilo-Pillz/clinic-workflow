@@ -1,0 +1,10 @@
+
+<a [routerLink]="['/add', consultation.id]">Add New Consultation</a>
+<div *ngFor="let clinicVisitation of clinicVisitations">
+    <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a>
+    <h1>{{ clinicVisitation.date }}</h1>
+    <hr>
+    <p>{{ clinicVisitation.diagnosis }}</p>
+    <p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
+</div>
+

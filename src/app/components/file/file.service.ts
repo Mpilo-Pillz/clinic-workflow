@@ -5,12 +5,16 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Consultation } from '../consultation/consultation.model';
 
 @Injectable({ providedIn: 'root'})
 export class FileService {
     private cfiles: CFile[];
     private cFilesUpdated = new Subject<CFile[]>();
     private apiUrl = environment.baseApiUrl;
+
+    private consultations: Consultation[];
+    private consultationsUpdated = new Subject<Consultation[]>();
 
     constructor(private http: HttpClient, private router: Router) {}
 
@@ -92,6 +96,34 @@ export class FileService {
     getPatientConsultations(idnumber: string) {
         return this.http.get<{
         }>(`${this.apiUrl}/api/cfiles/${idnumber}/consultations`, {});
+    }
+
+    getPatientConsultation(id: string) {
+        return this.http.get<{
+            _id: string,
+            date: string,
+            diagnosis: string,
+            prescription: string,
+        }>(`${this.apiUrl}/api/cfiles/${id}`);
+    }
+
+    addConsultation(id, diagnosis, prescription) {
+        const consultation: Consultation = {
+            id,
+            diagnosis,
+            prescription,
+        };
+        this.http
+        .patch<{message: string; consultationId: string }>(
+            `${this.apiUrl}/api/cfiles/new/consultation/${id}`,
+            consultation
+        ).subscribe(responseData => {
+            const id = responseData.consultationId;
+            consultation.id = id;
+            this.consultations.push(consultation);
+            this.consultationsUpdated.next([...this.consultations]);
+            this.router.navigate(['/']);
+        });
     }
 
     addCFile(

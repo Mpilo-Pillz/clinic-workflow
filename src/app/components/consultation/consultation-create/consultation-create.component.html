@@ -1,0 +1,46 @@
+<app-loading-spinner  *ngIf="isLoading"></app-loading-spinner>
+  <main class="paper shadow">
+  <form (submit)="onSaveConsultation()" [formGroup]="form" class="">
+    <div class="form-header">
+      <h1>{{ mode | titlecase }} File</h1>
+    </div>
+    <div class="form-input__section bg__white">
+    
+     
+      
+      <div class="">
+        <label class="txt-tertiary" for="diagnosis">Diagnosis:</label>
+        <textarea
+        name="diagnosis"  cols="30" rows="10"
+        class="form-control txt-secondary"
+        type="text"
+        id="diagnosis" 
+        placeholder="diagnosis"
+        formControlName="diagnosis"
+        ></textarea>
+        <p *ngIf="!form.get('diagnosis').valid && form.get('diagnosis').touched" class="form-error">Please enter valid initials</p>
+      </div>
+
+      <div class="">
+        <label class="txt-tertiary" for="prescription">Prescription:</label>
+        <textarea
+        name="prescription"  cols="30" rows="10"
+        class="form-control txt-secondary"
+        type="text"
+        id="prescription" 
+        placeholder="prescription"
+        formControlName="prescription"
+        ></textarea>
+        <p *ngIf="!form.get('prescription').valid && form.get('prescription').touched" class="form-error">Please enter valid prescription</p>
+      </div>
+      
+   
+    <div class="el--align-center">
+      <button class="btn btn-half btn--purple" type="submit" [name]="mode" aria-label="submit">{{ mode }}</button>
+      <a routerLink="/" class="link--text-purple" [name]="mode" aria-label="return">Return to search</a>
+    </div>
+   
+  </div>
+    </form>
+  </main>
+
