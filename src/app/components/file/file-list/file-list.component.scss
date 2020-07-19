@@ -1,27 +1,9 @@
 article {
     padding: 2rem;
 }
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 1.8rem;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    margin: 1rem;
-    display: flex;
-    justify-content: space-between;
-  }
 
-.panel {
-    padding: 0 1.8rem;
-    background-color: white;
-    font-size: 1.6rem;
-    overflow: hidden;
-  }
+
+
 
   .delete-button {
     //   display: none

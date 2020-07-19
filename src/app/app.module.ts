@@ -10,6 +10,7 @@ import { LoadingSpinnerComponent } from './components/utilities/loading-spinner/
 import { FileSearchComponent } from './components/file/file-search/file-search.component';
 import { ConsultationListComponent } from './components/consultation/consultation-list/consultation-list.component';
 import { ConsultationCreateComponent } from './components/consultation/consultation-create/consultation-create.component';
+import { AccordionComponent } from './components/utilities/accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ConsultationCreateComponent } from './components/consultation/consultat
     LoadingSpinnerComponent,
     FileSearchComponent,
     ConsultationListComponent,
-    ConsultationCreateComponent
+    ConsultationCreateComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,

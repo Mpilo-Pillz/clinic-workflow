@@ -1,10 +1,17 @@
 
 <a [routerLink]="['/add', consultation.id]">Add New Consultation</a>
-<div *ngFor="let clinicVisitation of clinicVisitations">
-    <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a>
-    <h1>{{ clinicVisitation.date }}</h1>
-    <hr>
+<ng-container *ngFor="let clinicVisitation of clinicVisitations">
+    <div class="accordion" (click)="toggleAccordion()">
+        <h1>{{ clinicVisitation.date }}</h1>
+        <!-- <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a> -->
+    </div>
+    
+    <div class="panel">
     <p>{{ clinicVisitation.diagnosis }}</p>
-    <p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
+    <p>{{ clinicVisitation.prescription }}</p>
 </div>
+<p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
+</ng-container>
+
+<strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
 

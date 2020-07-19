@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Consultation } from '../consultation.model';
 import { ConsultationService } from '../consultation.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -14,10 +14,12 @@ export class ConsultationListComponent implements OnInit {
   consultation;
   clinicVisitations;
   isLoading = false;
+  isActive = false;
   private patientId: string;
   constructor(private consultationService: ConsultationService,
               public route: ActivatedRoute,
-              private fileService: FileService
+              private fileService: FileService,
+              private renderer: Renderer2
     ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,27 @@ export class ConsultationListComponent implements OnInit {
           // }
         });
     });
+  }
+
+  toggleAccordion() {
+    const acc = document.getElementsByClassName('accordion');
+    
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener('click', function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle('active');
+
+    /* Toggle between hiding and showing the active panel */
+    const panel = this.nextElementSibling;
+    if (panel.style.display === 'block') {
+      panel.style.display = 'none';
+    } else {
+      panel.style.display = 'block';
+    }
+  });
+}
   }
 
 }
