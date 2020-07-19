@@ -5,7 +5,7 @@
     <h1>File List</h1>
   </div>
     <div *ngFor="let cfile of cfiles">
-      <div class="accordion" (click)="toggleAccordion()">
+      <div class="accordion-two" (click)="toggleAccordion()">
         <span>
           {{ cfile.title | titlecase }} {{ cfile.initials | uppercase }} {{ cfile.lastName | titlecase }}
         </span>
@@ -16,7 +16,7 @@
         </span>
       </div> 
     
-      <div class="patient-details panel" [hidden]="detailsHidden">
+      <div class="patient-details panel-two" [hidden]="detailsHidden">
      <p><strong>Initials:</strong> {{ cfile.initials }}</p>
     <p><strong>Full names:</strong> {{ cfile.fullNames }}</p>
     <p><strong>Last name:</strong> {{ cfile.lastName }}</p>

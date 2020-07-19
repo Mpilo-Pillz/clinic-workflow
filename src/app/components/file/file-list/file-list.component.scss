@@ -2,6 +2,51 @@ article {
     padding: 2rem;
 }
 
+.accordion-two {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 1.8rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  // margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &:after {
+      content: '\02795'; /* Unicode character for "plus" sign (+) */
+      font-size: 1.3rem;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+  }
+
+   &:hover {
+      background-color: peachpuff;
+    }
+}
+
+.active {
+  background-color: peachpuff;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.panel-two {
+  padding: 1.8rem;
+  background-color: white;
+  // display: none;
+  font-size: 1.6rem;
+  overflow: hidden;
+  margin: 1rem;
+  transition: max-height 0.2s ease-out;
+}
+
 
 
 
