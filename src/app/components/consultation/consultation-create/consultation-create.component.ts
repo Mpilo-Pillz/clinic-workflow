@@ -30,7 +30,7 @@ export class ConsultationCreateComponent implements OnInit {
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('idNumber')) {
-        this.mode = 'edit';
+        this.mode = 'Add';
         this.idNumber = paramMap.get('idNumber');
         this.isLoading = true;
         this.fileService.getPatientConsultation(this.idNumber).subscribe(consaltationData => {
@@ -49,9 +49,11 @@ export class ConsultationCreateComponent implements OnInit {
         });
       }
     });
-
   }
 
+  browserBack() {
+    window.history.go(-1);
+  }
   onSaveConsultation() {
     if (this.form.invalid) {
       return;

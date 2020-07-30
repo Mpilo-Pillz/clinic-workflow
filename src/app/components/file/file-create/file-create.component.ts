@@ -91,9 +91,12 @@ export class FileCreateComponent implements OnInit {
     // this.form.controls['title'].setValue(this.titleDropDownValues[3] );
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('cfileId')) {
+      console.log('paramMap-->', paramMap);
+      //paramMap id number was once cFileID
+      if (paramMap.has('idNumber')) {
+        
         this.mode = 'edit';
-        this.cfileId = paramMap.get('cfileId');
+        this.cfileId = paramMap.get('idNumber');
         this.isLoading = true;
         this.fileService.getCFile(this.cfileId).subscribe(cfileData => {
           this.isLoading = false;

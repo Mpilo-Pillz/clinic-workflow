@@ -1,5 +1,6 @@
 <app-loading-spinner  *ngIf="isLoading"></app-loading-spinner>
   <main class="paper shadow">
+    <input class="btn back" type="button" value="Go Back" (click)="browserBack()">
   <form (submit)="onSaveConsultation()" [formGroup]="form" class="">
     <div class="form-header">
       <h1>{{ mode | titlecase }} File</h1>

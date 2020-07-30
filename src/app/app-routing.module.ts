@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', component: FileSearchComponent },
   { path: 'list', component: FileListComponent },
   { path: 'create', component: FileCreateComponent },
+  { path: 'edit/:idNumber', component: FileCreateComponent },
   { path: 'add/:idNumber', component: ConsultationCreateComponent },
   { path: 'list/:idNumber', component: ConsultationListComponent },
 ];

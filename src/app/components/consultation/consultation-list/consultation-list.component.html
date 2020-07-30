@@ -1,3 +1,7 @@
+<div class="c-margin-bottom--4">
+    <a class="btn-return-home" [routerLink]="['/']" >Return to search</a>
+</div>
+<hr>
 <main class="d-flex--col d-flex--align-items-center">
     <strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
 
@@ -17,7 +21,7 @@
         </div>
         <p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
     </ng-container>
-    <a class="link--text-purple align-self--end" [routerLink]="['/add', consultation.id]">Add New Consultation</a>
+    <a class="link--text-purple align-self--end big-font" [routerLink]="['/add', consultation.id]">Click Here To Add New Consultation</a>
 </main>
 
 
