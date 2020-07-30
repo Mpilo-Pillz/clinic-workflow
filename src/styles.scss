@@ -1,15 +1,18 @@
 @import './styles/reset.scss';
 @import './styles/buttons.scss';
 @import './styles/form.scss';
-@import './styles/layouts.scss';
 
 @import './styles/abstracts/mixins';
 @import './styles/abstracts/variables';
 
+@import './styles/base/typography';
+
 @import './styles/components/accordion';
 @import './styles/components/feature-box';
+@import './styles/components/form';
 
 @import './styles/layout/grid.scss';
+@import './styles/layout/flex.scss';
 
 .paper {
     max-width: 90rem;

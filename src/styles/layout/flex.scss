@@ -5,6 +5,10 @@
 .d-flex {
     display: flex;
 
+    &--col {
+        @extend .d-flex;
+        flex-direction: column;
+    }
     &--col-spc-btwn {
         flex-direction: column;
         justify-content: space-between;
