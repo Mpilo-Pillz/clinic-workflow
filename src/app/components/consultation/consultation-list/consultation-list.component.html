@@ -1,17 +1,24 @@
+<main class="d-flex--col d-flex--align-items-center">
+    <strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
 
-<a [routerLink]="['/add', consultation.id]">Add New Consultation</a>
-<ng-container *ngFor="let clinicVisitation of clinicVisitations">
-    <div class="accordion" (click)="toggleAccordion()">
-        <h1>{{ clinicVisitation.date }}</h1>
-        <!-- <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a> -->
-    </div>
-    
-    <div class="panel">
-    <p>{{ clinicVisitation.diagnosis }}</p>
-    <p>{{ clinicVisitation.prescription }}</p>
-</div>
-<p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
-</ng-container>
+    <ng-container *ngFor="let clinicVisitation of clinicVisitations">
+        <div class="accordion" (click)="toggleAccordion()">
+            <h1>{{ clinicVisitation.date }}</h1>
+            <!-- <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a> -->
+        </div>
+        
+        <div class="panel">
+            <h2 class=" margin-md align-self--center">Diagnosis</h2>
+            <p class="margin-md">{{ clinicVisitation.diagnosis }}</p>
+            <hr>
+            <h2 class="margin-md align-self--center">Prescribed Medication</h2>
+            <p class="margin-md">{{ clinicVisitation.prescription }}</p>
+            <hr>
+        </div>
+        <p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
+    </ng-container>
+    <a class="link--text-purple align-self--end" [routerLink]="['/add', consultation.id]">Add New Consultation</a>
+</main>
 
-<strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
+
 

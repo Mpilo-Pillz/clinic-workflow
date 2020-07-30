@@ -5,6 +5,10 @@
 .d-flex {
     display: flex;
 
+    &--align-items-center {
+        @extend .d-flex;
+        align-items: center;
+    }
     &--col {
         @extend .d-flex;
         flex-direction: column;
@@ -23,8 +27,14 @@
         justify-content: center;
     }
 }
-
+.align-self--center {
+    align-self: center;
+}
+.align-self--end {
+    align-self: flex-end;
+}
 .el--align-center {
     text-align: center;
 }
+
 
