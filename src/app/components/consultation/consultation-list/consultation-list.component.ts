@@ -45,6 +45,9 @@ export class ConsultationListComponent implements OnInit {
                   id: consultationData[0].idNumber,
                   date: consultationData[0].notes.date,
                   diagnosis: consultationData[0].notes.diagnosis,
+                  title: consultationData[0].title,
+                  initials: consultationData[0].initials,
+                  lastName: consultationData[0].lastName
             };
           console.log('consult details =-->', this.consultation.id);
           // }

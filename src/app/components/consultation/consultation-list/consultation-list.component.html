@@ -3,8 +3,10 @@
 </div>
 <hr>
 <main class="d-flex--col d-flex--align-items-center">
+    <h2>List of previous consultations for:</h2>
+    <h1 class="patient-info">
+        {{ consultation.title | titlecase }}. {{ consultation.initials | uppercase }} {{ consultation.lastName | titlecase }}</h1>
     <strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
-
     <ng-container *ngFor="let clinicVisitation of clinicVisitations">
         <div class="accordion" (click)="toggleAccordion()">
             <h1>{{ clinicVisitation.date }}</h1>
