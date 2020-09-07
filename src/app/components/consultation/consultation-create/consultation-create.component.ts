@@ -12,6 +12,8 @@ export class ConsultationCreateComponent implements OnInit {
   consultation;
   form: FormGroup;
   idNumber;
+  imagePreview;
+  imageName = 'uploadedImg';
   isLoading;
   mode;
   constructor(public route: ActivatedRoute, public fileService: FileService) { }
@@ -25,6 +27,7 @@ export class ConsultationCreateComponent implements OnInit {
       prescription: new FormControl(null, {
         validators: [Validators.minLength(1)]
       }),
+      image: new FormControl(null, {validators: [Validators.required]})
 
     });
 
@@ -49,6 +52,19 @@ export class ConsultationCreateComponent implements OnInit {
         });
       }
     });
+  }
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ image: file});
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+      
+    };
+    reader.readAsDataURL(file);
+    
   }
 
   browserBack() {
