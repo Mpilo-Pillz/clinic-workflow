@@ -22,10 +22,9 @@
       <div class="upload">
         <button class="upload-btn" type="button" (click)="filePicker.click()">Upload Consultation</button>
         <input type="file" #filePicker (change)="onImagePicked($event)">
-        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
           <img [src]="imagePreview" [alt]="imageName">
         </div>
-      -->{{ imagePreview }}
       </div>
 
       <div class="d-flex--col consultation-input">

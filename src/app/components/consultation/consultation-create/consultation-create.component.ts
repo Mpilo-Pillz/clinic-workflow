@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FileService } from '../../file/file.service';
+import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-consultation-create',
@@ -27,7 +28,10 @@ export class ConsultationCreateComponent implements OnInit {
       prescription: new FormControl(null, {
         validators: [Validators.minLength(1)]
       }),
-      image: new FormControl(null, {validators: [Validators.required]})
+      image: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
 
     });
 
@@ -74,7 +78,6 @@ export class ConsultationCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    console.log('-->clicked');
     
     this.isLoading = true;
     // if (this.mode === 'create') {
