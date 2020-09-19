@@ -3,4 +3,5 @@ export interface Consultation {
     date?: string;
     diagnosis: string;
     prescription: string;
+    imagePath: File | string;
 }

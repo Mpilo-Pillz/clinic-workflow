@@ -84,7 +84,8 @@ export class ConsultationCreateComponent implements OnInit {
     this.fileService.addConsultation(
           this.idNumber,
           this.form.value.diagnosis,
-          this.form.value.prescription
+          this.form.value.prescription,
+          this.form.value.image
       );
     // }
     // else {

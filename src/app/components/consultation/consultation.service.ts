@@ -33,22 +33,28 @@ export class ConsultationService {
         }>(`${this.apiUrl}/api/cfiles/${idnumber}/consultations`, {});
     }
 
-    addConsultation(diagnosis) {
-        const cfile: any = {
-                consultation: diagnosis
-        };
-        this.http
-        .patch<{message: string; cfileId: string }>(
-            `${this.apiUrl}/api/cfiles`,
-            cfile
-        ).subscribe(responseData => {
-            const id = responseData.cfileId;
-            cfile.id = id;
-            this.consultations.push(cfile);
-            this.consultationsUpdated.next([...this.consultations]);
-            this.router.navigate(['/']);
-        });
-    }
+    // addConsultation(idNumber: string, diagnosis: string, prescription: string, image: File | string) {
+    //     const consultationData = new FormData();
+    //     consultationData.append('idNumber', idNumber);
+    //     consultationData.append('diagnosis', diagnosis);
+    //     consultationData.append('prescription', prescription);
+    //     consultationData.append('image', image, diagnosis);
+    //     this.http
+    //     .patch<{message: string; cfileId: string }>(
+    //         `${this.apiUrl}/api/cfiles`,
+    //         consultationData
+    //     ).subscribe(responseData => {
+    //         const consultation: Consultation = {
+    //             id: responseData.cfileId,
+    //             diagnosis,
+    //             prescription
+    //         };
+    //         const id = responseData.cfileId;
+    //         this.consultations.push(consultation);
+    //         this.consultationsUpdated.next([...this.consultations]);
+    //         this.router.navigate(['/']);
+    //     });
+    // }
 //look at the fileservice for this
     updateConsultation(diagnosis) {
         const cfile: any = {
@@ -76,3 +82,22 @@ export class ConsultationService {
           });
       }
 }
+
+
+
+// addConsultation(diagnosis) {
+//     const cfile: any = {
+//             consultation: diagnosis
+//     };
+//     this.http
+//     .patch<{message: string; cfileId: string }>(
+//         `${this.apiUrl}/api/cfiles`,
+//         cfile
+//     ).subscribe(responseData => {
+//         const id = responseData.cfileId;
+//         cfile.id = id;
+//         this.consultations.push(cfile);
+//         this.consultationsUpdated.next([...this.consultations]);
+//         this.router.navigate(['/']);
+//     });
+// }
