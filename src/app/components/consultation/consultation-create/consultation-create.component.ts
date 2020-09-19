@@ -3,6 +3,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FileService } from '../../file/file.service';
 import { mimeType } from './mime-type.validator';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-consultation-create',
@@ -17,7 +18,11 @@ export class ConsultationCreateComponent implements OnInit {
   imageName = 'uploadedImg';
   isLoading;
   mode;
-  constructor(public route: ActivatedRoute, public fileService: FileService) { }
+  constructor(
+    private location: Location,
+    public route: ActivatedRoute, 
+    public fileService: FileService
+    ) { }
 
   ngOnInit(): void {
 
@@ -32,7 +37,6 @@ export class ConsultationCreateComponent implements OnInit {
         validators: [Validators.required],
         asyncValidators: [mimeType]
       })
-
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -48,11 +52,11 @@ export class ConsultationCreateComponent implements OnInit {
                 diagnosis: consaltationData.diagnosis,
                 prescription: consaltationData.prescription,
           };
-          this.form.setValue({
-                date: this.consultation.date,
-                diagnosis: this.consultation.diagnosis,
-                prescription: this.consultation.prescription,
-          });
+          // this.form.setValue({
+          //       date: this.consultation.date,
+          //       diagnosis: this.consultation.diagnosis,
+          //       prescription: this.consultation.prescription,
+          // });
         });
       }
     });
@@ -72,7 +76,8 @@ export class ConsultationCreateComponent implements OnInit {
   }
 
   browserBack() {
-    window.history.go(-1);
+    // window.history.go(-1);
+    this.location.back();
   }
   onSaveConsultation() {
     if (this.form.invalid) {

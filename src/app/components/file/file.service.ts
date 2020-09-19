@@ -1,22 +1,25 @@
-import { Injectable } from "@angular/core";
-import { CFile } from "./file.model";
-import { Subject } from "rxjs";
-import { map, tap } from "rxjs/operators";
-import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
-import { Consultation } from "../consultation/consultation.model";
+import { Injectable } from '@angular/core';
+import { CFile } from './file.model';
+import { Subject } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Consultation } from '../consultation/consultation.model';
+import { Location } from '@angular/common';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class FileService {
   private cfiles: CFile[];
   private cFilesUpdated = new Subject<CFile[]>();
   private apiUrl = environment.baseApiUrl;
 
-  private consultations: Consultation[];
-  private consultationsUpdated = new Subject<Consultation[]>();
+  private consultations: Consultation[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+      private location: Location,
+      private http: HttpClient,
+      private router: Router) {}
 
   getCFiles() {
     this.http
@@ -111,11 +114,14 @@ export class FileService {
     }>(`${this.apiUrl}/api/cfiles/${id}`);
   }
 
-  uploadImageToCloudinary(imagePath, diagnosis) {
+  private uploadImageToCloudinary(imagePath, diagnosis) {
     const imageData = new FormData();
     imageData.append('file', imagePath, diagnosis);
     imageData.set('upload_preset', 'ml_default');
-    imageData.set('public_id', `clinic-workflow/consultation`);
+    imageData.set(
+      'public_id',
+      `clinic-workflow/${diagnosis}${new Date().getTime()}`
+    );
     return this.http.post<{ url: string }>(
       `https://api.cloudinary.com/v1_1/mpilopillz/image/upload`,
       imageData
@@ -124,27 +130,27 @@ export class FileService {
 
   addConsultation(id, diagnosis, prescription, imagePath) {
     this.uploadImageToCloudinary(imagePath, diagnosis)
-      .pipe(tap((data) => console.log(`TAP--> ${data.url}`)))
-      .subscribe((data) => {
-        const imageUrl = data.url;
-        const consultation: Consultation = {
-            id,
-            diagnosis,
-            prescription,
-            imagePath: imageUrl,
-          };
-        this.http
-          .patch<{ message: string; consultationId: string }>(
+      .pipe( //returning a new observable
+        map(({ url }) => ({
+          //mapping the values creating a new observable
+          id,
+          diagnosis,
+          prescription,
+          imagePath: url,
+        })),
+        switchMap((
+          consultation // we switching to the we want switch to
+        ) =>
+          this.http.patch<Consultation>(
             `${this.apiUrl}/api/cfiles/new/consultation/${id}`,
             consultation
           )
-          .subscribe(responseData => {
-                    const id = responseData.consultationId;
-                    consultation.id = id;
-                    this.consultations.push(consultation);
-                    this.consultationsUpdated.next([...this.consultations]);
-                    this.router.navigate(['/']);
-                });
+        )
+      )
+      .subscribe((consultation) => {
+        this.consultations.push(consultation);
+        this.location.back();
+        // this.router.navigateByUrl('/');
       });
   }
 
@@ -189,7 +195,7 @@ export class FileService {
         cfile.id = id;
         this.cfiles.push(cfile);
         this.cFilesUpdated.next([...this.cfiles]);
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       });
   }
 
@@ -233,7 +239,7 @@ export class FileService {
         updatedCFiles[oldCFileIndex] = cfile;
         this.cfiles = updatedCFiles;
         this.cFilesUpdated.next([...this.cfiles]);
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       });
   }
 
