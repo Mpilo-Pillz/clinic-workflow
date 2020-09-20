@@ -20,6 +20,7 @@
             <h2 class="margin-md align-self--center">Prescribed Medication</h2>
             <p class="margin-md">{{ clinicVisitation.prescription }}</p>
             <hr>
+            <img [src]="clinicVisitation.imagePath" alt="" srcset="">
         </div>
         <p class="info-text mat-body-1" *ngIf="clinicVisitation.diagnosis === undefined && !isLoading">No files added yet!</p>
     </ng-container>

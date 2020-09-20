@@ -8,19 +8,21 @@
     <div class="form-input__area bg__white">
       <div class="d-flex--col consultation-input">
         <label class="txt-tertiary" for="diagnosis">Diagnosis:</label>
-        <textarea
+        <select
         name="diagnosis"  cols="30" rows="10"
         class="notes txt-secondary"
         type="text"
         id="diagnosis" 
         placeholder="diagnosis"
         formControlName="diagnosis"
-        ></textarea>
+        >
+        <option *ngFor="let icdCode of object.entries(medicalCodes)" [value]="icdCode">{{ icdCode[0] + ' ' + icdCode[1] }}</option>
+      </select>
         <p *ngIf="!form.get('diagnosis').valid && form.get('diagnosis').touched" class="form-error">Please enter valid initials</p>
       </div>
 
       <div class="upload">
-        <button class="upload-btn" type="button" (click)="filePicker.click()">Upload Consultation</button>
+        <button class="upload-btn" type="button" (click)="filePicker.click()">Browse Files To Upload</button>
         <input type="file" #filePicker (change)="onImagePicked($event)">
         <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
           <img [src]="imagePreview" [alt]="imageName">

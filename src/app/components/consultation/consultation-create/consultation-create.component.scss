@@ -16,6 +16,33 @@ align-items: center;
 }
 input[type="file"] {
     visibility: hidden;
+    
+}
+
+.upload {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.upload-btn {
+    border: none;
+    font-size: 1.6rem;
+    font-weight: 900;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    align-self: center;
+}
+
+.upload-btn:hover {
+    background-color: rgba(250, 199, 133, 0.8);
+    color: #f5f5f5;
+    font-size: 1.7rem;
+}
+
+.form-input__area {
+    display: flex;
+    flex-direction: column;
 }
 
 

@@ -120,7 +120,7 @@ export class FileService {
     imageData.set('upload_preset', 'ml_default');
     imageData.set(
       'public_id',
-      `clinic-workflow/${diagnosis}${new Date().getTime()}`
+      `clinic-workflow/diagnosis${new Date().getTime()}`
     );
     return this.http.post<{ url: string }>(
       `https://api.cloudinary.com/v1_1/mpilopillz/image/upload`,
