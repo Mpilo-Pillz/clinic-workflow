@@ -7,8 +7,8 @@
     <h1 class="patient-info">
         {{ consultation.title | titlecase }}. {{ consultation.initials | uppercase }} {{ consultation.lastName | titlecase }}</h1>
     <strong>* DOUBLE CLICK DATE TO VIEW CONSULTATION AND PRESCRIPTION</strong>
-    <ng-container *ngFor="let clinicVisitation of clinicVisitations">
-        <div class="accordion" (click)="toggleAccordion()">
+    <ng-container *ngFor="let clinicVisitation of clinicVisitations; let i = index">
+        <div class="accordion">
             <h1>{{ clinicVisitation.date }}</h1>
             <!-- <a class="edit-link" [routerLink]="['/edit', clinicVisitation._id]">EDIT</a> -->
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { Consultation } from '../consultation.model';
 import { ConsultationService } from '../consultation.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -9,7 +9,7 @@ import { FileService } from 'src/app/components/file/file.service';
   templateUrl: './consultation-list.component.html',
   styleUrls: ['./consultation-list.component.scss']
 })
-export class ConsultationListComponent implements OnInit {
+export class ConsultationListComponent implements OnInit, AfterViewInit {
   consultations: Consultation[] = [];
   consultation;
   clinicVisitations;
@@ -55,9 +55,8 @@ export class ConsultationListComponent implements OnInit {
     });
   }
 
-  toggleAccordion() {
+  ngAfterViewInit() {
     const acc = document.getElementsByClassName('accordion');
-    
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < acc.length; i++) {
   acc[i].addEventListener('click', function() {
@@ -75,5 +74,11 @@ export class ConsultationListComponent implements OnInit {
   });
 }
   }
+
+  // toggleAccordion(event, index) {
+  //   // let element = event.target;
+  //   // element.classList.toggle("active");
+    
+  // }
 
 }
