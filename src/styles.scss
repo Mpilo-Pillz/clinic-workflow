@@ -1,10 +1,10 @@
 @import './styles/reset.scss';
 @import './styles/buttons.scss';
-@import './styles/form.scss';
 
 @import './styles/abstracts/mixins';
 @import './styles/abstracts/variables';
 
+@import './styles/base/base';
 @import './styles/base/typography';
 
 @import './styles/components/accordion';
@@ -13,6 +13,8 @@
 
 @import './styles/layout/grid.scss';
 @import './styles/layout/flex.scss';
+
+@import './styles/pages/home.scss';
 
 .paper {
     max-width: 90rem;

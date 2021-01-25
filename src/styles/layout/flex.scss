@@ -4,7 +4,10 @@
 
 .d-flex {
     display: flex;
-
+    
+    @include respond(phone) {
+        flex-direction: column;
+    }
     &--align-items-center {
         @extend .d-flex;
         align-items: center;
