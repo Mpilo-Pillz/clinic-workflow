@@ -3,6 +3,10 @@
 &-tertiary {
     font-size: 1.7rem;
     margin: 2rem;
+
+    @include respond(phone) {
+        margin: 0.7rem;
+    }
 }
 
 &-secondary {

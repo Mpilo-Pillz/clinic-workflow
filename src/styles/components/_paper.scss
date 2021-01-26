@@ -1,0 +1,23 @@
+.paper {
+    max-width: 90rem;
+    background-color: rgba(250, 199, 133, 0.8);
+    margin: 0 auto;
+    padding: 2rem 7rem;
+    min-height: 100vh;
+
+    @include respond(phone) {
+        padding: 0;
+    }
+}
+
+.shadow {
+    box-shadow: .2rem .6rem 4rem 1.2rem #555454;
+}
+
+.shadow-md {
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
+
+.bg__white {
+    background-color: #fff;
+}

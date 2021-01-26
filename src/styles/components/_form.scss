@@ -32,6 +32,12 @@
         border-bottom: .2rem solid black;
         margin-bottom: 3rem;
         text-align: center;
+
+        @include respond(phone) {
+            font-size: 1.6rem; 
+            margin-bottom: 0;
+            padding: 1.6rem;
+        }
     }
     &-control {
         margin: .5rem;
@@ -49,6 +55,19 @@
             padding: 2rem;
             width: 100%;
             margin-bottom: 2rem;
+        }
+    }
+
+    input, button, select {
+        border: none;
+        margin: .7rem;
+        padding: .5rem;
+        background-color: transparent;
+        // color: white;
+        font-weight: bold;
+
+        @include respond(phone) {
+            background-color: #ffffff;
         }
     }
     
